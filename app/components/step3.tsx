@@ -43,7 +43,7 @@ function slotsFor(dateISO: string): SlotDef[] {
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export function Step3({ intent, service, selectedSlot, onSelectSlot, onNext, onBack }: {
+export function Step3({ intent, service: _service, selectedSlot, onSelectSlot, onNext, onBack }: {
   intent: string | null;
   service: string | null;
   selectedSlot: Slot | null;
@@ -80,7 +80,7 @@ export function Step3({ intent, service, selectedSlot, onSelectSlot, onNext, onB
           {isEmergency ? "We can be there fast." : "Pick a window that works."}
         </h1>
         <p style={{ fontSize: 16, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.5 }}>
-          Two-hour arrival windows. You'll get a text when your plumber is 30 minutes out —
+          Two-hour arrival windows. You&apos;ll get a text when your plumber is 30 minutes out —
           no waiting around all day.
         </p>
       </div>
@@ -242,8 +242,8 @@ export function Step3({ intent, service, selectedSlot, onSelectSlot, onNext, onB
           </div>
 
           <div style={{ fontSize: 13.5, color: "var(--ink-2)", lineHeight: 1.5 }}>
-            "Certified on tankless and gas. I keep the work area cleaner than I found it —
-            shoe covers on, drop cloths down, no surprises."
+            &quot;Certified on tankless and gas. I keep the work area cleaner than I found it —
+            shoe covers on, drop cloths down, no surprises.&quot;
           </div>
 
           <div style={{

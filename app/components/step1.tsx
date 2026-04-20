@@ -13,7 +13,7 @@ export function Step1({ onPick }: { onPick: (id: string) => void }) {
           What brings you in today?
         </h1>
         <p style={{ fontSize: 16.5, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.5 }}>
-          Tell us whether this is urgent or something you'd like to schedule.
+          Tell us whether this is urgent or something you&apos;d like to schedule.
           A licensed plumber will handle your job from start to finish — no middlemen.
         </p>
       </div>
@@ -81,7 +81,7 @@ export function Step1({ onPick }: { onPick: (id: string) => void }) {
   );
 }
 
-function IntentCard({ id, tone, eyebrow, title, sub, bullets, icon, cta, hover, onMouseEnter, onMouseLeave, onClick }: {
+function IntentCard({ id: _id, tone, eyebrow, title, sub, bullets, icon, cta, hover, onMouseEnter, onMouseLeave, onClick }: {
   id: string;
   tone: "accent" | "primary";
   eyebrow: string;

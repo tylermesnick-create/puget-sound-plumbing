@@ -1,6 +1,6 @@
 "use client";
 
-import React, { SVGProps } from "react";
+import React from "react";
 
 interface IconProps {
   size?: number;

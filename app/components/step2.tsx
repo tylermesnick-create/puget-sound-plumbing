@@ -65,7 +65,7 @@ export function Step2({ intent, selected, onSelect, onNext, onBack }: {
             {isEmergency ? "What's going wrong?" : "What can we help with?"}
           </h1>
           <p style={{ fontSize: 16, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.5 }}>
-            Pick the closest match — we'll confirm the exact scope with you by phone before dispatch.
+            Pick the closest match — we&apos;ll confirm the exact scope with you by phone before dispatch.
           </p>
         </div>
       </div>

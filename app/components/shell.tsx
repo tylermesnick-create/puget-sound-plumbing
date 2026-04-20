@@ -1,6 +1,6 @@
 "use client";
 
-import React, { CSSProperties, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import * as Ic from "./icons";
 
 export function Logo({ size = 28 }: { size?: number }) {

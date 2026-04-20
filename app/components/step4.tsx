@@ -105,7 +105,7 @@ export function Step4({ intent, service, slot, contact, setContact, onBack, onCo
           Where should we come?
         </h1>
         <p style={{ fontSize: 16, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.5 }}>
-          One last step. We'll text you to confirm — and again when your plumber is on the way.
+          One last step. We&apos;ll text you to confirm — and again when your plumber is on the way.
         </p>
       </div>
 
@@ -190,7 +190,7 @@ export function Step4({ intent, service, slot, contact, setContact, onBack, onCo
               {agree && <Ic.Check size={12} stroke={3} />}
             </button>
             <div style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5 }}>
-              Text me updates about this booking. Standard message rates may apply. We don't sell your info — ever.
+              Text me updates about this booking. Standard message rates may apply. We don&apos;t sell your info — ever.
             </div>
           </div>
         </div>
@@ -313,7 +313,7 @@ export function Success({ intent, service, slot, contact, onReset }: {
         </div>
 
         <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", animation: "slidein .5s .1s backwards" }}>
-          You're booked.
+          You&apos;re booked.
         </h1>
         <p style={{ fontSize: 16, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.5, animation: "slidein .5s .2s backwards" }}>
           {isEmergency

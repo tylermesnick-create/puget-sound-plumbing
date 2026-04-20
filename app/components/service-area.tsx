@@ -69,8 +69,8 @@ export function ServiceAreaSection() {
               fontSize: 38, fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.02em", marginTop: 10
             }}>Do we serve your area?</h2>
             <p style={{ fontSize: 16, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.55, maxWidth: 520 }}>
-              Type in your ZIP and we'll tell you on the spot. We cover most of Seattle
-              and the close-in Eastside; if we can't reach you we'll refer you to a plumber we trust.
+              Type in your ZIP and we&apos;ll tell you on the spot. We cover most of Seattle
+              and the close-in Eastside; if we can&apos;t reach you we&apos;ll refer you to a plumber we trust.
             </p>
 
             <form onSubmit={check} style={{
