@@ -9,6 +9,7 @@ import { Step3, Slot } from "./components/step3";
 import { Step4, Success, Contact } from "./components/step4";
 import { ServiceAreaSection } from "./components/service-area";
 import { GallerySection } from "./components/gallery";
+import { ReviewCaptureSection } from "./components/review-capture";
 import { ChatWidget } from "./components/chat";
 import * as Ic from "./components/icons";
 
@@ -65,6 +66,7 @@ export default function RainierPlumbing() {
             <Step1 onPick={handlePickIntent} />
             <ServiceAreaSection />
             <GallerySection />
+            <ReviewCaptureSection />
           </>
         ) : step === 2 ? (
           <Step2
