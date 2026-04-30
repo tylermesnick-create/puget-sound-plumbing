@@ -3,11 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as Ic from "./icons";
 
-const CANNED_REPLIES = [
-  "Got it — sending this to our on-call plumber right now. One sec.",
-  "Thanks! Can you share the address so we can check travel time?",
-  "Noted. We can have someone out today — want to lock in a window?",
-];
+const FALLBACK_ERROR =
+  "Hmm, having trouble connecting. You can reach us directly at (206) 420-1188.";
 
 interface Message {
   from: "me" | "them";
@@ -44,18 +41,89 @@ export function ChatWidget() {
     if (open) setTimeout(() => inputRef.current?.focus(), 200);
   }, [open]);
 
-  function send() {
+  async function send() {
     const text = input.trim();
     if (!text && attachments.length === 0) return;
+    if (typing) return;
+
     const atts = attachments;
-    setMessages((m) => [...m, { from: "me", text, attachments: atts, time: "now" }]);
-    setInput(""); setAttachments([]);
+    const userMsg: Message = { from: "me", text, attachments: atts, time: "now" };
+    const newHistory = [...messages, userMsg];
+    setMessages(newHistory);
+    setInput("");
+    setAttachments([]);
     setTyping(true);
-    setTimeout(() => {
-      const reply = CANNED_REPLIES[messages.length % CANNED_REPLIES.length];
-      setMessages((m) => [...m, { from: "them", text: reply, time: "now" }]);
+
+    // Build API payload from full conversation history (text only — attachments
+    // are decorative in this demo and aren't actually uploaded). If the visitor
+    // sent only an attachment with no text, substitute a placeholder so Sam can
+    // acknowledge it.
+    const apiMessages = newHistory
+      .map((m) => ({
+        role: (m.from === "me" ? "user" : "assistant") as "user" | "assistant",
+        content:
+          m.text.trim().length > 0
+            ? m.text
+            : m.from === "me" && (m.attachments?.length ?? 0) > 0
+              ? "[sent a photo]"
+              : "",
+      }))
+      .filter((m) => m.content.length > 0);
+
+    let assistantStarted = false;
+    let assistantText = "";
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: apiMessages }),
+      });
+      if (!res.ok || !res.body) throw new Error("Chat request failed");
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        if (!chunk) continue;
+        assistantText += chunk;
+
+        if (!assistantStarted) {
+          assistantStarted = true;
+          setTyping(false);
+          setMessages((m) => [
+            ...m,
+            { from: "them", text: assistantText, time: "now" },
+          ]);
+        } else {
+          setMessages((m) => {
+            const copy = [...m];
+            copy[copy.length - 1] = { ...copy[copy.length - 1], text: assistantText };
+            return copy;
+          });
+        }
+      }
+
+      if (!assistantStarted) {
+        // Stream produced nothing — fall back to a friendly error.
+        setTyping(false);
+        setMessages((m) => [...m, { from: "them", text: FALLBACK_ERROR, time: "now" }]);
+      }
+    } catch {
       setTyping(false);
-    }, 1100 + Math.random() * 600);
+      if (assistantStarted) {
+        // Mid-stream failure: append a short note rather than overwrite a partial reply.
+        setMessages((m) => [
+          ...m,
+          { from: "them", text: FALLBACK_ERROR, time: "now" },
+        ]);
+      } else {
+        setMessages((m) => [...m, { from: "them", text: FALLBACK_ERROR, time: "now" }]);
+      }
+    }
   }
 
   function handleAttach() {
