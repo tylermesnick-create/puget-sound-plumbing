@@ -193,7 +193,7 @@ export function Step3({ intent, service: _service, selectedSlot, onSelectSlot, o
                     <span style={{
                       fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase",
                       color: "var(--accent)", fontWeight: 600,
-                      background: "var(--accent-soft)", padding: "3px 7px", borderRadius: 999
+                      background: "var(--accent-soft)", padding: "3px 7px", borderRadius: 0
                     }}>1 left</span>
                   )}
                   {isSel && <Ic.Check size={16} stroke={3} />}
@@ -228,7 +228,7 @@ export function Step3({ intent, service: _service, selectedSlot, onSelectSlot, o
           <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 14 }}>
             <div style={{
               width: 56, height: 56, borderRadius: "50%",
-              background: "linear-gradient(135deg, #1E6FA8, #0B3B5C)",
+              background: "linear-gradient(135deg, #2F6FB0, #17202B)",
               color: "#fff", display: "grid", placeItems: "center",
               fontFamily: "'Inter Tight', sans-serif", fontWeight: 700, fontSize: 20
             }}>MT</div>

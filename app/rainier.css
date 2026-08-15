@@ -1,26 +1,32 @@
 :root {
-  --bg: #F5F1EA;
+  /* ── Modern industrial: graphite + steel-blue ── */
+  --bg: #F2F4F6;
   --surface: #FFFFFF;
-  --surface-2: #FAF7F2;
-  --ink: #0E1B24;
-  --ink-2: #3B4A56;
-  --muted: #6B7885;
-  --line: #E6DFD4;
-  --line-2: #EFEAE0;
-  --primary: #0B3B5C;
-  --primary-2: #1E6FA8;
-  --primary-soft: #E8F0F6;
-  --accent: #D64A2B;
-  --accent-2: #B83A1E;
-  --accent-soft: #FBEAE3;
+  --surface-2: #F6F8FA;
+  --ink: #12171D;
+  --ink-2: #39424D;
+  --muted: #5A6472;
+  --line: #E1E5EA;
+  --line-2: #EBEEF2;
+  --primary: #17202B;      /* graphite — primary CTAs, official */
+  --primary-2: #2F6FB0;    /* steel-blue — links, eyebrows, highlights */
+  --primary-soft: #E7EEF6;
+  --accent: #C2410C;       /* burnt amber — emergency only, used sparingly */
+  --accent-2: #9E340A;
+  --accent-soft: #F7E7DD;
   --ok: #2E7D5B;
-  --r-s: 10px;
-  --r-m: 14px;
-  --r-l: 20px;
-  --r-xl: 28px;
-  --shadow-sm: 0 1px 0 rgba(14,27,36,.04), 0 1px 2px rgba(14,27,36,.04);
-  --shadow-md: 0 2px 0 rgba(14,27,36,.03), 0 8px 24px -12px rgba(14,27,36,.18);
-  --shadow-lg: 0 30px 60px -30px rgba(11,59,92,.28), 0 10px 24px -16px rgba(14,27,36,.18);
+  --steel: #2F6FB0;
+  --graphite-2: #1D2733;
+  /* Sharp edges read more official. Kept as tokens so the whole site squares
+     from one place — set these back to 6/8/12/16px to revert. */
+  --r-s: 0px;
+  --r-m: 0px;
+  --r-l: 0px;
+  --r-xl: 0px;
+  /* Flatter surfaces: definition comes from hairlines, not drop shadows */
+  --shadow-sm: 0 1px 0 rgba(18,23,29,.04);
+  --shadow-md: 0 1px 0 rgba(18,23,29,.05);
+  --shadow-lg: 0 18px 40px -30px rgba(18,23,29,.28);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -35,7 +41,18 @@ body {
   font-feature-settings: 'ss01','cv11';
 }
 
-h1, h2, h3, h4 {
+/* Display type is a variable serif — the single change that moves this from
+   "SaaS landing page" to "established company". Inter stays for body copy. */
+h1, h2, h3 {
+  font-family: 'Fraunces', 'Inter Tight', Georgia, serif;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+  margin: 0;
+  text-wrap: balance;
+}
+h4 {
   font-family: 'Inter Tight', 'Inter', sans-serif;
   letter-spacing: -0.01em;
   margin: 0;
@@ -93,4 +110,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 820px) {
   .footer-grid    { grid-template-columns: 1fr !important; gap: 40px !important; padding: 44px 24px 28px !important; }
   .footer-strip   { justify-content: flex-start !important; }
+}
+
+/* ── Review fixes ── */
+
+/* Measure: body copy was running to ~102 characters per line. */
+p { max-width: 72ch; }
+
+/* Touch targets: several nav, footer and chip links were under 24px tall. */
+nav a, footer a, footer button { display: inline-block; padding-block: 8px; }
+@media (max-width: 820px) {
+  nav a, footer a, footer button { padding-block: 11px; }
 }

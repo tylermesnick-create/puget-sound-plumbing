@@ -65,7 +65,7 @@ export function Header({ onCall }: { onCall: () => void }) {
           <button onClick={onCall} className="call-btn" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "var(--ink)", color: "#fff",
-            border: "none", borderRadius: 999, padding: "10px 16px",
+            border: "none", borderRadius: 0, padding: "10px 16px",
             fontSize: 14, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap",
             boxShadow: "0 1px 0 rgba(255,255,255,.1) inset"
           }}>
@@ -96,11 +96,11 @@ export function Progress({ step, total = 4, labels }: { step: number; total?: nu
           ))}
         </span>
       </div>
-      <div style={{ height: 6, background: "var(--line-2)", borderRadius: 999, overflow: "hidden", position: "relative" }}>
+      <div style={{ height: 6, background: "var(--line-2)", borderRadius: 0, overflow: "hidden", position: "relative" }}>
         <div style={{
           width: `${pct}%`, height: "100%",
           background: "linear-gradient(90deg, #1E6FA8, #0B3B5C)",
-          borderRadius: 999, transition: "width .5s cubic-bezier(.2,.8,.2,1)"
+          borderRadius: 0, transition: "width .5s cubic-bezier(.2,.8,.2,1)"
         }} />
       </div>
     </div>
@@ -123,7 +123,7 @@ export function TrustStrip() {
         {items.map((it, i) => (
           <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
             <div style={{
-              width: 36, height: 36, borderRadius: 10, display: "grid", placeItems: "center",
+              width: 36, height: 36, borderRadius: 0, display: "grid", placeItems: "center",
               background: "#fff", border: "1px solid var(--line)", color: "var(--primary)"
             }}>{it.icon}</div>
             <div>
@@ -150,7 +150,7 @@ export function BackBtn({ onClick, children = "Back" }: { onClick: () => void; c
     <button onClick={onClick} style={{
       display: "inline-flex", alignItems: "center", gap: 8,
       background: "transparent", border: "1px solid var(--line)",
-      color: "var(--ink-2)", padding: "10px 14px", borderRadius: 999,
+      color: "var(--ink-2)", padding: "10px 14px", borderRadius: 0,
       fontWeight: 500, fontSize: 14, cursor: "pointer"
     }}>
       <Ic.ArrowLeft size={16} /> {children}
@@ -169,7 +169,7 @@ export function PrimaryBtn({
 }) {
   const [hovered, setHovered] = React.useState(false);
   const bg = tone === "accent" ? "var(--accent)" : tone === "dark" ? "var(--ink)" : "var(--primary)";
-  const bgH = tone === "accent" ? "var(--accent-2)" : "#082C46";
+  const bgH = tone === "accent" ? "var(--accent-2)" : "#0B1118";
   return (
     <button
       onClick={onClick}
@@ -179,7 +179,7 @@ export function PrimaryBtn({
       style={{
         display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
         background: disabled ? "#BFC8D1" : hovered ? bgH : bg,
-        color: "#fff", border: "none", borderRadius: 999,
+        color: "#fff", border: "none", borderRadius: 0,
         padding: size === "lg" ? "15px 24px" : "11px 18px",
         fontSize: size === "lg" ? 15.5 : 14, fontWeight: 600,
         cursor: disabled ? "not-allowed" : "pointer",

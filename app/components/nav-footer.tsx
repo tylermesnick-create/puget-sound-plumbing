@@ -15,9 +15,10 @@ export function NavBar({ onBook }: { onBook?: () => void }) {
   }, []);
 
   const links = [
-    { label: "Home", href: "#top" },
-    { label: "Coverage", href: "#service-area" },
+    { label: "Services", href: "#services" },
     { label: "Our Work", href: "#gallery" },
+    { label: "Reviews", href: "#reviews" },
+    { label: "Coverage", href: "#service-area" },
     { label: "Book Now", href: "#top", emphasis: true },
   ];
 
@@ -98,7 +99,7 @@ export function NavBar({ onBook }: { onBook?: () => void }) {
         <button className="nav-burger" onClick={() => setOpen((o) => !o)}
           aria-label="Menu"
           style={{
-            display: "none", width: 40, height: 40, borderRadius: 10,
+            display: "none", width: 40, height: 40, borderRadius: 0,
             background: "transparent", border: "1px solid var(--line)",
             cursor: "pointer", placeItems: "center", color: "var(--ink)"
           }}>
@@ -132,7 +133,7 @@ export function NavBar({ onBook }: { onBook?: () => void }) {
           <a href="tel:+12064201188" style={{
             marginTop: 14, display: "flex", alignItems: "center", gap: 10,
             background: "var(--ink)", color: "#fff", padding: "14px 18px",
-            borderRadius: 999, textDecoration: "none", fontWeight: 600, fontSize: 14,
+            borderRadius: 0, textDecoration: "none", fontWeight: 600, fontSize: 14,
             justifyContent: "center"
           }}>
             <Ic.Phone size={15} /> Call (206) 420-1188
@@ -158,8 +159,8 @@ function NavLink({ href, emphasis, onClick, children }: {
           display: "inline-block", padding: "8px 14px",
           fontSize: 13.5, fontWeight: emphasis ? 600 : 500,
           color: emphasis ? "#fff" : hovered ? "var(--ink)" : "var(--ink-2)",
-          textDecoration: "none", borderRadius: 999,
-          background: emphasis ? (hovered ? "#082C46" : "var(--primary)") : "transparent",
+          textDecoration: "none", borderRadius: 0,
+          background: emphasis ? (hovered ? "#0B1118" : "var(--primary)") : "transparent",
           transition: "background .15s ease, color .15s ease"
         }}>
         {children}
@@ -304,7 +305,7 @@ export function SiteFooter() {
               {areas.map((a, i) => (
                 <li key={i} style={{
                   fontSize: 12, color: "rgba(245,241,234,.72)",
-                  padding: "4px 10px", borderRadius: 999,
+                  padding: "4px 10px", borderRadius: 0,
                   background: "rgba(255,255,255,.05)",
                   border: "1px solid rgba(255,255,255,.08)"
                 }}>{a}</li>

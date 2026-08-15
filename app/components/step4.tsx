@@ -15,7 +15,7 @@ export interface Contact {
 
 const inputStyle: CSSProperties = {
   width: "100%", background: "#fff", border: "1.5px solid var(--line)",
-  borderRadius: 12, padding: "13px 14px", fontSize: 15, color: "var(--ink)",
+  borderRadius: 0, padding: "13px 14px", fontSize: 15, color: "var(--ink)",
   outline: "none", fontFamily: "inherit", transition: "border-color .15s ease, box-shadow .15s ease"
 };
 
@@ -37,7 +37,7 @@ function Row({ icon, label, value }: { icon: ReactNode; label: string; value: Re
   return (
     <div style={{ display: "flex", gap: 12, alignItems: "flex-start", fontSize: 14 }}>
       <div style={{
-        width: 28, height: 28, borderRadius: 8, background: "var(--surface-2)",
+        width: 28, height: 28, borderRadius: 0, background: "var(--surface-2)",
         display: "grid", placeItems: "center", color: "var(--primary)",
         border: "1px solid var(--line)", flexShrink: 0
       }}>{icon}</div>
@@ -150,7 +150,7 @@ export function Step4({ intent, service, slot, contact, setContact, onBack, onCo
               <button onClick={useLocation} type="button" disabled={locating} style={{
                 position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)",
                 background: "var(--surface-2)", border: "1px solid var(--line)",
-                borderRadius: 10, padding: "8px 12px", fontSize: 12.5, fontWeight: 600,
+                borderRadius: 0, padding: "8px 12px", fontSize: 12.5, fontWeight: 600,
                 color: "var(--primary)", cursor: locating ? "wait" : "pointer",
                 display: "inline-flex", alignItems: "center", gap: 6
               }}>
@@ -182,7 +182,7 @@ export function Step4({ intent, service, slot, contact, setContact, onBack, onCo
 
           <div style={{ display: "flex", gap: 10, alignItems: "flex-start", paddingTop: 4 }}>
             <button type="button" onClick={() => setAgree(!agree)} style={{
-              width: 20, height: 20, borderRadius: 6, flexShrink: 0,
+              width: 20, height: 20, borderRadius: 0, flexShrink: 0,
               border: `1.5px solid ${agree ? "var(--primary-2)" : "var(--line)"}`,
               background: agree ? "var(--primary-2)" : "#fff",
               color: "#fff", display: "grid", placeItems: "center", cursor: "pointer", marginTop: 2
@@ -210,7 +210,7 @@ export function Step4({ intent, service, slot, contact, setContact, onBack, onCo
                 <span className="mono" style={{
                   fontSize: 10.5, letterSpacing: "0.14em", textTransform: "uppercase",
                   color: "var(--accent)", fontWeight: 600,
-                  background: "var(--accent-soft)", padding: "4px 8px", borderRadius: 999
+                  background: "var(--accent-soft)", padding: "4px 8px", borderRadius: 0
                 }}>Emergency</span>
               )}
             </div>
@@ -220,7 +220,7 @@ export function Step4({ intent, service, slot, contact, setContact, onBack, onCo
               borderBottom: "1px solid var(--line-2)"
             }}>
               <div style={{
-                width: 44, height: 44, borderRadius: 12, background: "var(--primary-soft)",
+                width: 44, height: 44, borderRadius: 0, background: "var(--primary-soft)",
                 color: "var(--primary)", display: "grid", placeItems: "center"
               }}>{svc?.icon}</div>
               <div>
@@ -360,12 +360,12 @@ export function Success({ intent, service, slot, contact, onReset }: {
         }}>
           <button onClick={onReset} style={{
             background: "transparent", border: "1px solid var(--line)",
-            borderRadius: 999, padding: "11px 18px", fontSize: 14, fontWeight: 500,
+            borderRadius: 0, padding: "11px 18px", fontSize: 14, fontWeight: 500,
             color: "var(--ink-2)", cursor: "pointer"
           }}>Book another visit</button>
           <a href="tel:+12064201188" style={{
             background: "var(--ink)", color: "#fff", textDecoration: "none",
-            borderRadius: 999, padding: "11px 18px", fontSize: 14, fontWeight: 600,
+            borderRadius: 0, padding: "11px 18px", fontSize: 14, fontWeight: 600,
             display: "inline-flex", alignItems: "center", gap: 8
           }}>
             <Ic.Phone size={14} /> Call dispatch
@@ -381,7 +381,7 @@ function Steplet({ num, text }: { num: string; text: string }) {
     <div style={{
       display: "flex", gap: 12, alignItems: "center", fontSize: 13.5, color: "var(--ink-2)",
       textAlign: "left", padding: "10px 12px", background: "#fff",
-      border: "1px solid var(--line)", borderRadius: 12
+      border: "1px solid var(--line)", borderRadius: 0
     }}>
       <span style={{
         width: 22, height: 22, borderRadius: "50%", background: "var(--primary)",

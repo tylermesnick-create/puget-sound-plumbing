@@ -362,7 +362,7 @@ export function ReviewCaptureSection({
                     background: canSubmit ? "var(--ink)" : "#BFC8D1",
                     color: "#fff",
                     border: "none",
-                    borderRadius: 999,
+                    borderRadius: 0,
                     padding: "14px 24px",
                     fontSize: 15,
                     fontWeight: 600,

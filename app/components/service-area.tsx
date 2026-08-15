@@ -76,7 +76,7 @@ export function ServiceAreaSection() {
             <form onSubmit={check} style={{
               marginTop: 24, display: "flex", gap: 10, maxWidth: 440,
               background: "#fff", border: "1.5px solid var(--line)",
-              borderRadius: 999, padding: 6, boxShadow: "var(--shadow-sm)"
+              borderRadius: 0, padding: 6, boxShadow: "var(--shadow-sm)"
             }}>
               <input
                 value={zip}
@@ -91,7 +91,7 @@ export function ServiceAreaSection() {
               />
               <button type="submit" disabled={checking} style={{
                 background: "var(--primary)", color: "#fff", border: "none",
-                borderRadius: 999, padding: "12px 22px", fontSize: 14, fontWeight: 600,
+                borderRadius: 0, padding: "12px 22px", fontSize: 14, fontWeight: 600,
                 cursor: checking ? "wait" : "pointer", display: "inline-flex", alignItems: "center", gap: 6,
                 whiteSpace: "nowrap"
               }}>
@@ -157,7 +157,7 @@ export function ServiceAreaSection() {
                       </div>
                       <button style={{
                         marginTop: 12, background: "var(--ink)", color: "#fff", border: "none",
-                        borderRadius: 999, padding: "9px 16px", fontSize: 13.5, fontWeight: 600, cursor: "pointer"
+                        borderRadius: 0, padding: "9px 16px", fontSize: 13.5, fontWeight: 600, cursor: "pointer"
                       }}>Get a referral</button>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ function ServiceAreaMap({ result }: { result: CheckResult | null }) {
         }}>Service map · Seattle</div>
         <div style={{ fontSize: 12, color: "var(--muted)", display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <span style={{ width: 10, height: 10, borderRadius: 2, background: "var(--primary-2)", opacity: 0.32 }} />
+            <span style={{ width: 10, height: 10, borderRadius: 0, background: "var(--primary-2)", opacity: 0.32 }} />
             coverage
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
@@ -204,59 +204,29 @@ function ServiceAreaMap({ result }: { result: CheckResult | null }) {
         </div>
       </div>
 
-      {/* Map placeholder — replace with Mapbox */}
+      {/* Real embedded Google map (no API key required) */}
       <div style={{
         position: "relative",
         aspectRatio: "4/3",
         width: "100%",
         borderRadius: "var(--r-l)",
-        background: "linear-gradient(180deg, #EEF3F8 0%, #DDE6EF 100%)",
-        border: "1px dashed #B8C7D6",
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-        gap: 16, overflow: "hidden"
+        overflow: "hidden",
+        border: "1px solid var(--line)"
       }}>
-        <svg width="100%" height="100%" style={{ position: "absolute", inset: 0, opacity: 0.35, pointerEvents: "none" }}>
-          <defs>
-            <pattern id="mapGrid" width="32" height="32" patternUnits="userSpaceOnUse">
-              <path d="M32 0H0V32" fill="none" stroke="#B8C7D6" strokeWidth=".6" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#mapGrid)" />
-        </svg>
-
-        <div style={{
-          width: 56, height: 56, borderRadius: "50%",
-          background: "#fff", color: "var(--primary)",
-          display: "grid", placeItems: "center",
-          boxShadow: "0 6px 18px -8px rgba(11,59,92,.35), 0 0 0 1px rgba(11,59,92,.08)",
-          zIndex: 1,
-          animation: "mapPinBob 2.4s ease-in-out infinite"
-        }}>
-          <Ic.Pin size={26} stroke={2} />
-        </div>
-
-        <div style={{ textAlign: "center", zIndex: 1, maxWidth: 280, padding: "0 20px" }}>
-          <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.005em" }}>
-            Live coverage map
-          </div>
-          <div style={{
-            marginTop: 4, fontSize: 12.5, color: "var(--muted)",
-            display: "inline-flex", alignItems: "center", gap: 8
-          }}>
-            <span style={{
-              width: 6, height: 6, borderRadius: "50%", background: "var(--primary-2)",
-              animation: "mapDot 1.2s ease-in-out infinite"
-            }} />
-            Mapbox integration pending
-          </div>
-        </div>
+        <iframe
+          title="Rainier Plumbing service area — Seattle"
+          src="https://maps.google.com/maps?q=Seattle,WA&z=10&output=embed"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0, filter: "grayscale(0.12) contrast(1.03)" }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </div>
 
       <div style={{
         marginTop: 12, fontSize: 11, color: "var(--muted)", textAlign: "center",
         fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.08em"
       }}>
-        13 NEIGHBORHOODS COVERED · REPLACE WITH MAPBOX
+        SEATTLE · SHORELINE · EASTSIDE · PUGET SOUND
       </div>
     </div>
   );

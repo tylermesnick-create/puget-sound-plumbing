@@ -44,7 +44,7 @@ export function Step2({ intent, selected, onSelect, onNext, onBack }: {
               <span className="mono" style={{
                 fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase",
                 color: "var(--accent)", fontWeight: 600,
-                background: "var(--accent-soft)", padding: "6px 10px", borderRadius: 999,
+                background: "var(--accent-soft)", padding: "6px 10px", borderRadius: 0,
                 display: "inline-flex", alignItems: "center", gap: 6
               }}>
                 <span style={{
@@ -57,7 +57,7 @@ export function Step2({ intent, selected, onSelect, onNext, onBack }: {
               <span className="mono" style={{
                 fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase",
                 color: "var(--primary-2)", fontWeight: 600,
-                background: "var(--primary-soft)", padding: "6px 10px", borderRadius: 999
+                background: "var(--primary-soft)", padding: "6px 10px", borderRadius: 0
               }}>Scheduled visit</span>
             )}
           </div>
@@ -93,7 +93,7 @@ export function Step2({ intent, selected, onSelect, onNext, onBack }: {
               }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div style={{
-                  width: 48, height: 48, borderRadius: 12,
+                  width: 48, height: 48, borderRadius: 0,
                   background: isSelected ? "var(--primary)" : "var(--surface-2)",
                   color: isSelected ? "#fff" : "var(--primary)",
                   display: "grid", placeItems: "center",

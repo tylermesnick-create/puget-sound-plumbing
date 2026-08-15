@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Header, Progress, TrustStrip } from "./components/shell";
+import { Progress, TrustStrip } from "./components/shell";
 import { NavBar, SiteFooter } from "./components/nav-footer";
-import { Step1 } from "./components/step1";
+import { Hero, ServicesSection, WhyUsSection, ProcessSection, GuaranteeBand, TestimonialsSection, FaqSection } from "./components/home";
 import { Step2 } from "./components/step2";
 import { Step3, Slot } from "./components/step3";
 import { Step4, Success, Contact } from "./components/step4";
@@ -24,11 +24,12 @@ export default function RainierPlumbing() {
   const [done, setDone] = React.useState(false);
 
   function onCall() {
-    alert("📞 Calling (206) 420-1188…\n\nIn a real app this would start a phone call.");
+    // In the demo this is a placeholder; the tel: link handles the real call.
   }
 
-  function handlePickIntent(id: string) {
-    setIntent(id);
+  // Launch the booking wizard from any marketing CTA.
+  function startBooking(intentId: string = "schedule") {
+    setIntent(intentId);
     goTo(2);
   }
 
@@ -44,13 +45,15 @@ export default function RainierPlumbing() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  const inWizard = !done && step > 1;
+
   return (
     <>
       <div id="top" />
-      <Header onCall={onCall} />
-      <NavBar onBook={() => { if (step !== 1) goTo(1); }} />
+      <NavBar onBook={() => { if (step !== 1) reset(); }} />
 
-      {!done && <Progress step={step} total={4} labels={STEP_LABELS} />}
+      {/* Booking progress only appears once you're actually inside the wizard */}
+      {inWizard && <Progress step={step} total={4} labels={STEP_LABELS} />}
 
       <main style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         {done ? (
@@ -63,9 +66,15 @@ export default function RainierPlumbing() {
           />
         ) : step === 1 ? (
           <>
-            <Step1 onPick={handlePickIntent} />
+            <Hero onBook={() => startBooking("schedule")} onCall={onCall} />
+            <ServicesSection onBook={() => startBooking("schedule")} />
+            <GuaranteeBand onBook={() => startBooking("schedule")} />
+            <WhyUsSection />
+            <ProcessSection onBook={() => startBooking("schedule")} />
             <ServiceAreaSection />
             <GallerySection />
+            <TestimonialsSection />
+            <FaqSection />
             <ReviewCaptureSection />
           </>
         ) : step === 2 ? (
@@ -108,7 +117,7 @@ export default function RainierPlumbing() {
       <a href="tel:+12064201188" className="fab-call" style={{
         position: "fixed", right: 16, bottom: 16, zIndex: 30,
         background: "var(--ink)", color: "#fff", textDecoration: "none",
-        borderRadius: 999, padding: "14px 18px",
+        borderRadius: 0, padding: "14px 18px",
         boxShadow: "0 12px 30px -10px rgba(0,0,0,.4)",
         display: "none", alignItems: "center", gap: 8, fontWeight: 600, fontSize: 14
       }}>

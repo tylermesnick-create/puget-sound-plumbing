@@ -64,7 +64,7 @@ export function Step1({ onPick }: { onPick: (id: string) => void }) {
       }}>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <div style={{
-            width: 36, height: 36, borderRadius: 10, background: "var(--surface-2)",
+            width: 36, height: 36, borderRadius: 0, background: "var(--surface-2)",
             display: "grid", placeItems: "center", color: "var(--primary)", border: "1px solid var(--line)"
           }}><Ic.Phone size={16} /></div>
           <div>
@@ -127,7 +127,7 @@ function IntentCard({ id: _id, tone, eyebrow, title, sub, bullets, icon, cta, ho
       )}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative" }}>
         <div style={{
-          width: 56, height: 56, borderRadius: 16, background: accentSoft, color: accent,
+          width: 56, height: 56, borderRadius: 0, background: accentSoft, color: accent,
           display: "grid", placeItems: "center"
         }}>{icon}</div>
         <span className="mono" style={{
@@ -135,7 +135,7 @@ function IntentCard({ id: _id, tone, eyebrow, title, sub, bullets, icon, cta, ho
           color: accent, fontWeight: 600,
           background: "transparent", padding: "6px 10px",
           border: `1px solid ${isEmergency ? "rgba(214,74,43,.25)" : "rgba(30,111,168,.25)"}`,
-          borderRadius: 999
+          borderRadius: 0
         }}>{eyebrow}</span>
       </div>
 

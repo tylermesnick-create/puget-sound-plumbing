@@ -136,7 +136,7 @@ export function ChatWidget() {
       <button onClick={() => setOpen(true)} className="chat-toggle" style={{
         position: "fixed", right: 20, bottom: 20, zIndex: 40,
         background: "var(--primary)", color: "#fff", border: "none",
-        borderRadius: 999, padding: "14px 18px 14px 14px",
+        borderRadius: 0, padding: "14px 18px 14px 14px",
         boxShadow: "0 18px 36px -12px rgba(11,59,92,.5)",
         display: "inline-flex", alignItems: "center", gap: 10,
         cursor: "pointer", fontFamily: "inherit"
@@ -216,7 +216,7 @@ export function ChatWidget() {
         {typing && (
           <div style={{ alignSelf: "flex-start", display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
             <div style={{
-              background: "#E7E3DC", borderRadius: 18, padding: "10px 14px",
+              background: "#E7E3DC", borderRadius: 0, padding: "10px 14px",
               display: "flex", gap: 4, alignItems: "center"
             }}>
               {[0, 1, 2].map((i) => (
@@ -239,7 +239,7 @@ export function ChatWidget() {
         }}>
           {attachments.map((a) => (
             <div key={a.id} style={{
-              width: 54, height: 54, borderRadius: 8, background: a.color, position: "relative",
+              width: 54, height: 54, borderRadius: 0, background: a.color, position: "relative",
               flexShrink: 0, overflow: "hidden"
             }}>
               <div style={{
@@ -272,7 +272,7 @@ export function ChatWidget() {
         <div style={{
           flex: 1, display: "flex", alignItems: "center",
           background: "var(--surface-2)", border: "1px solid var(--line)",
-          borderRadius: 22, padding: "4px 6px 4px 14px", minHeight: 36
+          borderRadius: 0, padding: "4px 6px 4px 14px", minHeight: 36
         }}>
           <input
             ref={inputRef}
@@ -314,7 +314,7 @@ function MessageBubble({ msg }: { msg: Message }) {
         <div style={{ display: "flex", gap: 4, flexWrap: "wrap", justifyContent: me ? "flex-end" : "flex-start" }}>
           {msg.attachments.map((a) => (
             <div key={a.id} style={{
-              width: 140, height: 100, borderRadius: 14, background: a.color,
+              width: 140, height: 100, borderRadius: 0, background: a.color,
               position: "relative", overflow: "hidden"
             }}>
               <div style={{
